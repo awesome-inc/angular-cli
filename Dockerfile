@@ -1,4 +1,4 @@
-FROM node:8.6-alpine
+FROM node:8-alpine
 
 LABEL author=awesome-inc description="Angular-CLI Container"
 
