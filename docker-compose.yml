@@ -1,0 +1,9 @@
+version: '3'
+services:
+  cli:
+    build:
+      context: .
+      args:
+        http_proxy: ${http_proxy}
+        https_proxy: ${https_proxy}
+        DOCKER_TAG: ${DOCKER_TAG}
