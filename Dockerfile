@@ -3,7 +3,6 @@ FROM node:9.3.0-alpine
 LABEL author=awesome-inc description="Angular-CLI Container"
 
 ENV NPM_CONFIG_LOGLEVEL warn
-ENV NODE_ENV production
 
 # install angular-cli as node user
 RUN chown -R node:node /usr/local/lib/node_modules \
