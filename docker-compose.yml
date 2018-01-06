@@ -6,4 +6,15 @@ services:
       args:
         http_proxy: ${http_proxy}
         https_proxy: ${https_proxy}
-        DOCKER_TAG: ${DOCKER_TAG}
+        no_proxy: ${no_proxy}
+        DOCKER_TAG: ${CLI_VERSION}
+  myapp:
+    build:
+      context: ./myapp
+      args:
+        http_proxy: ${http_proxy}
+        https_proxy: ${https_proxy}
+        no_proxy: ${no_proxy}
+        CLI_VERSION: ${CLI_VERSION}
+    ports:
+      - 8080:80
