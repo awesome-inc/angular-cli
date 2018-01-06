@@ -16,8 +16,9 @@ RUN yarn
 
 ADD ./ ./
 
-RUN ng test --single-run
-RUN ng build --prod
+RUN yarn run test
+#RUN yarn run e2e
+RUN yarn run build
 
 # 2. Package runtime image (NGINX)
 FROM nginx:1.13.2-alpine
