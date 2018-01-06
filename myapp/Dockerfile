@@ -2,24 +2,21 @@
 ARG CLI_VERSION
 FROM awesomeinc/angular-cli:${CLI_VERSION:-latest} AS build-env
 
-# Add proxy information, sufficient for npm
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-ARG NO_PROXY
+# Add proxy information
+ARG http_proxy
+ARG https_proxy
+ARG no_proxy
 
-COPY package.json /tmp/package.json
-# for npm
-COPY package-lock.json /tmp/package-lock.json
-# for yarn
-# ADD yarn.lock /tmp/yarn.lock
+RUN mkdir -p /build
+WORKDIR /build 
+COPY package.json package-lock.json yarn.lock ./
 
-RUN cd /tmp && npm install
-RUN mkdir -p /build && cp -a /tmp/node_modules /build/
+# RUN npm install
+RUN yarn
 
-WORKDIR /build
-ADD ./ .
+ADD ./ ./
 
-# package
+# RUN ng test --single-run
 RUN ng build --prod
 
 # 2. Package runtime image (NGINX)

@@ -1,13 +1,14 @@
 version: '3'
 services:
-  cli:
+  angular-cli:
+    image: awesomeinc/angular-cli:${VERSION:-latest}
     build:
       context: .
       args:
         http_proxy: ${http_proxy}
         https_proxy: ${https_proxy}
         no_proxy: ${no_proxy}
-        DOCKER_TAG: ${CLI_VERSION}
+        NG_CLI_VERSION: ${VERSION:-latest}
   myapp:
     build:
       context: ./myapp
@@ -15,6 +16,6 @@ services:
         http_proxy: ${http_proxy}
         https_proxy: ${https_proxy}
         no_proxy: ${no_proxy}
-        CLI_VERSION: ${CLI_VERSION}
+        CLI_VERSION: ${VERSION:-latest}
     ports:
       - 8080:80
