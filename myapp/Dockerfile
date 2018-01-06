@@ -16,7 +16,7 @@ RUN yarn
 
 ADD ./ ./
 
-# RUN ng test --single-run
+RUN ng test --single-run
 RUN ng build --prod
 
 # 2. Package runtime image (NGINX)
