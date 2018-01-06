@@ -36,7 +36,13 @@ module.exports = function (config) {
     customLaunchers: {
       ChromeDocker: {
         base: 'ChromeHeadless',
-        flags: ['--headless', '--disable-gpu', '--no-sandbox', '--remote-debugging-port=9222']
+        flags: [
+          '--headless', 
+          '--disable-gpu', 
+          '--no-sandbox', 
+          '--remote-debugging-port=9222',
+          '--window-size=800,600'
+        ]
       }
     },
   });
