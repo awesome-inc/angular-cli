@@ -1,7 +1,7 @@
-before_script: cd myapp
 language: node_js
 node_js:
   - "8"
 cache: yarn
-env:
-- NODE_ENV=TEST
+before_script: cd myapp
+install: yarn
+script: yarn test
