@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - "8"
 cache: yarn
-before_script: cd myapp
+before_install: cd myapp
 install: yarn
 script: yarn test
