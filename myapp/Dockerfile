@@ -3,15 +3,18 @@ ARG CLI_VERSION
 FROM awesomeinc/angular-cli:${CLI_VERSION:-latest} AS build-env
 
 # Add proxy information
-ARG http_proxy
-ARG https_proxy
-ARG no_proxy
+ARG http_proxy=
+ARG https_proxy=
+ARG no_proxy=
 
 RUN mkdir -p /build
-WORKDIR /build 
-COPY package.json package-lock.json yarn.lock ./
+WORKDIR /build
+COPY package.json yarn.lock ./
 
-# RUN npm install
+RUN if [[ ${http_proxy:+1} ]]; then\
+  yarn config set proxy ${http_proxy} &&\
+  yarn config set https-proxy ${https_proxy};\
+fi
 RUN yarn
 
 ADD ./ ./
