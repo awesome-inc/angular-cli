@@ -7,31 +7,16 @@ ARG http_proxy=
 ARG https_proxy=
 ARG no_proxy=
 
-RUN mkdir -p /build
-WORKDIR /build
-COPY package.json yarn.lock ./
+COPY package.json package-*.json yarn.loc* ./
 
-RUN if [[ ${http_proxy:+1} ]]; then\
-  yarn config set proxy ${http_proxy} &&\
-  yarn config set https-proxy ${https_proxy};\
-fi
 RUN yarn
 
 ADD ./ ./
 
-RUN yarn run test
-#RUN yarn run e2e
-RUN yarn run build
+RUN yarn test
+RUN yarn e2e
+RUN yarn build
 
 # 2. Package runtime image (NGINX)
-FROM nginx:1.13.2-alpine
-
-COPY --from=build-env /build/dist/ /usr/share/nginx/html
-
-# Customized nginx config
-#COPY ./etc/nginx.conf /etc/nginx/nginx.conf
-#COPY ./etc/conf.d /etc/nginx/conf.d
-
-EXPOSE 80
-
-CMD nginx -g 'daemon off;'
+FROM nginx:1.14.0-alpine
+COPY --from=build-env /usr/src/app/dist/myapp /usr/share/nginx/html
