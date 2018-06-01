@@ -1,11 +1,12 @@
 # angular-cli
 
+[![Build status](https://travis-ci.org/awesome-inc/angular-cli.svg?branch=master)](https://travis-ci.org/awesome-inc/angular-cli/)
+[![GitHub issues](https://img.shields.io/github/issues/awesome-inc/angular-cli.svg "GitHub issues")](https://github.com/awesome-inc/angular-cli)
+[![GitHub stars](https://img.shields.io/github/stars/awesome-inc/angular-cli.svg "GitHub stars")](https://github.com/awesome-inc/angular-cli)
+
 A Node image containing a global installation of [@angular/cli](https://github.com/angular/angular-cli) to build [Angular](https://angular.io/) applications in a container.
 
 [![dockeri.co](http://dockeri.co/image/awesomeinc/angular-cli)](https://hub.docker.com/r/awesomeinc/angular-cli/)
-[![Build status](https://travis-ci.org/awesome-inc/angular-cli.svg?branch=master)](https://travis-ci.org/awesome-inc/angular-cli/)
-[![GitHub issues](https://img.shields.io/github/issues/awesome-inc/angular-cli.svg "GitHub issues")](https://github.com/awesome-inc/angular-cli)
-[![GitHub stars](https://img.shields.io/github/stars/awesome-inc/angular-cli "GitHub stars")](https://github.com/awesome-inc/angular-cli)
 
 ## Usage
 
@@ -39,7 +40,7 @@ const isDocker = require('is-docker')();
 ```
 
 We used [is-docker](https://www.npmjs.com/package/is-docker) to detect whether we are running inside Docker.
-So you should add it as dev dependency in your `package.json` like this
+So you should add it as development dependency in your `package.json` like this
 
 ```json
     "is-docker": "^1.1.0"
@@ -67,7 +68,6 @@ const isDocker = require('is-docker')();
         '--window-size=800,600'
       ] : []
     }
-  },
   },
   // Use pre-installed chromedriver (alpine)
   chromeDriver: isDocker ? '/usr/bin/chromedriver' : null,
