@@ -26,8 +26,8 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
-    singleRun: false,
+    autoWatch: false,
+    //singleRun: false,
 
     // cf.: https://hackernoon.com/running-karma-tests-with-headless-chrome-inside-docker-ae4aceb06ed3
     browsers: isDocker ? ['ChromeDocker'] : ['Chrome'],
