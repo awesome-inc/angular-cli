@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 services:
   angular-cli:
     image: awesomeinc/angular-cli:${VERSION:-latest}
