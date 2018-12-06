@@ -1,4 +1,4 @@
-ARG base=zenika/alpine-chrome:13
+ARG base=zenika/alpine-chrome:with-node
 FROM ${base}
 
 ### Adjust from base image
@@ -8,7 +8,7 @@ ENTRYPOINT []
 # protractor: Add chromium-driver, fixes #5
 USER root
 RUN apk -U --no-cache add chromium-chromedriver && \
-    rm -rf /var/cache/apk/*
+  rm -rf /var/cache/apk/*
 USER chrome
 
 # Add yarn global binaries to path
@@ -19,7 +19,7 @@ ENV NPM_CONFIG_LOGLEVEL warn
 
 ARG NG_CLI_VERSION=latest
 RUN yarn global add @angular/cli@$NG_CLI_VERSION && \
-    rm -rf $(yarn cache dir)
+  rm -rf $(yarn cache dir)
 # set yarn as default package manager for ng
 RUN ng config -g cli.packageManager yarn
 

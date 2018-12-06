@@ -19,7 +19,7 @@ module.exports = function (config) {
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../coverage'),
-      reports: ['html', 'lcovonly'],
+      reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],
@@ -35,9 +35,9 @@ module.exports = function (config) {
       ChromeDocker: {
         base: 'ChromeHeadless',
         flags: [
-          '--headless', 
-          '--disable-gpu', 
-          '--no-sandbox', 
+          '--headless',
+          '--disable-gpu',
+          '--no-sandbox',
           '--remote-debugging-port=9222',
           '--window-size=800,600'
         ]

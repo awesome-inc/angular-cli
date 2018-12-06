@@ -7,7 +7,7 @@ ARG http_proxy=
 ARG https_proxy=
 ARG no_proxy=
 
-COPY package.json package-*.json yarn.loc* ./
+COPY package.json yarn.loc* ./
 
 RUN yarn
 
@@ -18,5 +18,5 @@ RUN yarn e2e
 RUN yarn build
 
 # 2. Package runtime image (NGINX)
-FROM nginx:1.14.0-alpine
+FROM nginx:1.15.7-alpine
 COPY --from=build-env /usr/src/app/dist/myapp /usr/share/nginx/html
