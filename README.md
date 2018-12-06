@@ -1,12 +1,15 @@
 # angular-cli
 
-[![Build status](https://travis-ci.org/awesome-inc/angular-cli.svg?branch=master)](https://travis-ci.org/awesome-inc/angular-cli/)
-[![GitHub issues](https://img.shields.io/github/issues/awesome-inc/angular-cli.svg "GitHub issues")](https://github.com/awesome-inc/angular-cli)
-[![GitHub stars](https://img.shields.io/github/stars/awesome-inc/angular-cli.svg "GitHub stars")](https://github.com/awesome-inc/angular-cli)
+[![Docker build](https://img.shields.io/docker/build/awesomeinc/angular-cli.svg?logo=docker)](https://hub.docker.com/r/awesomeinc/angular-cli/builds/)
+[![Docker automated](https://img.shields.io/docker/automated/awesomeinc/angular-cli.svg?logo=docker)](https://travis-ci.org/awesome-inc/angular-cli/)
+[![Docker stars](https://img.shields.io/docker/stars/awesomeinc/angular-cli.svg)](https://travis-ci.org/awesome-inc/angular-cli/)
+[![Docker pulls](https://img.shields.io/docker/pulls/awesomeinc/angular-cli.svg?logo=docker)](https://travis-ci.org/awesome-inc/angular-cli/)
+
+[![Build status](https://img.shields.io/travis/awesome-inc/angular-cli.svg?logo=travis)](https://travis-ci.org/awesome-inc/angular-cli/)
+[![GitHub issues](https://img.shields.io/github/issues/awesome-inc/angular-cli.svg?logo=github "GitHub issues")](https://github.com/awesome-inc/angular-cli)
+[![GitHub stars](https://img.shields.io/github/stars/awesome-inc/angular-cli.svg?logo=github "GitHub stars")](https://github.com/awesome-inc/angular-cli)
 
 A Node image containing a global installation of [@angular/cli](https://github.com/angular/angular-cli) to build [Angular](https://angular.io/) applications in a container.
-
-[![dockeri.co](http://dockeri.co/image/awesomeinc/angular-cli)](https://hub.docker.com/r/awesomeinc/angular-cli/)
 
 ## Usage
 
