@@ -1,21 +1,7 @@
-version: '3.4'
+version: "3.4"
 services:
-  angular-cli:
-    image: awesomeinc/angular-cli:${VERSION:-latest}
-    build:
-      context: .
-      args:
-        http_proxy: ${http_proxy}
-        https_proxy: ${https_proxy}
-        no_proxy: ${no_proxy}
-        NG_CLI_VERSION: ${VERSION:-latest}
   myapp:
     build:
       context: ./myapp
-      args:
-        http_proxy: ${http_proxy}
-        https_proxy: ${https_proxy}
-        no_proxy: ${no_proxy}
-        CLI_VERSION: ${VERSION:-latest}
     ports:
       - 8080:80

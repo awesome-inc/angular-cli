@@ -1,22 +1,24 @@
 # 1. Build & test app
-ARG CLI_VERSION
-FROM awesomeinc/angular-cli:${CLI_VERSION:-latest} AS build-env
+FROM zenika/alpine-chrome:with-node AS base
 
-# Add proxy information
-ARG http_proxy=
-ARG https_proxy=
-ARG no_proxy=
+# see
+# - https://github.com/Zenika/alpine-chrome/blob/master/with-chromedriver/Dockerfile
+# - https://github.com/Zenika/alpine-chrome/blob/master/with-node/Dockerfile
+USER root
+RUN apk add --no-cache chromium-chromedriver
+USER chrome
 
-COPY package.json yarn.loc* ./
+FROM base AS build
+WORKDIR /usr/src/app
 
-RUN yarn
+COPY ["package*.json", "./"]
+RUN npm ci
 
-ADD ./ ./
-
-RUN yarn test
-RUN yarn e2e
-RUN yarn build
+COPY ["./", "./"]
+RUN npm run test
+RUN npm run e2e
+RUN npm run build
 
 # 2. Package runtime image (NGINX)
-FROM nginx:1.15.7-alpine
-COPY --from=build-env /usr/src/app/dist/myapp /usr/share/nginx/html
+FROM nginx:1.19.8-alpine
+COPY --from=build /usr/src/app/dist/myapp /usr/share/nginx/html
